@@ -1,0 +1,32 @@
+{
+  "name": "mean-natural-kit",
+  "version": "1.0.0",
+  "description": "MEAN Stack authentication app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "npm": "^6.1.0",
+    "passport": "*",
+    "passport-jwt": "^4.0.0",
+    "socket.io": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielmalmros/mean-natural-kit.git"
+  },
+  "author": "Daniel Malmros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielmalmros/mean-natural-kit/issues"
+  },
+  "homepage": "https://github.com/danielmalmros/mean-natural-kit#readme"
+}

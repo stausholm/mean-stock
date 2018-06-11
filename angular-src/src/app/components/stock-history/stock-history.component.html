@@ -1,0 +1,10 @@
+<div *ngIf="stock">
+  <h1>History of: {{stock.stockName}}</h1>
+
+  <ul>
+    <li *ngFor="let history of stock.stockHistory; let i = index">
+      <p>{{history.stockValue}}</p>
+      <p>{{history.stockTimestamp}}</p>
+    </li>
+  </ul>
+</div>
