@@ -87,6 +87,7 @@ router.get('/stocks/:stockId', (req, res, next) => {
 
 router.clients = [];
 router.addClient = function (client) {
+    console.log('addClient');
     router.clients.push(client);
     router.notifyClients(client);
 };
@@ -97,7 +98,7 @@ router.notifyClients = function (client) {
         //console.log("Load success: ", blogs);
         var toNotify = client?new Array(client):router.clients;
         toNotify.forEach(function(socket){
-            console.log('socket foreach', router.clients.length)
+            //console.log('socket foreach', router.clients.length)
             socket.emit('update', stocks);
         })
     });

@@ -34,6 +34,7 @@ export class TableRowComponent implements OnInit {
     this.stockservice.deleteStock(stockId).subscribe(data => {
       if (data.success) {
         this.flashMessages.show('Your stock was deleted!', { cssClass: 'alert-success', timeout: 3000 })
+        this.stockservice.sendMsg(this.stockitem);
       } else {
         this.flashMessages.show('Deleting stock went wrong!', { cssClass: 'alert-danger', timeout: 3000 })
       }
@@ -45,6 +46,7 @@ export class TableRowComponent implements OnInit {
     this.stockservice.updateStock(this.stockitem._id, {"stockValue":this.newValue}).subscribe(data => {
       if (data.success) {
         this.flashMessages.show('Your stock was updated!', { cssClass: 'alert-success', timeout: 3000 })
+        this.stockservice.sendMsg(this.stockitem);
       } else {
         this.flashMessages.show('Updating stock went wrong!', { cssClass: 'alert-danger', timeout: 3000 })
       }
