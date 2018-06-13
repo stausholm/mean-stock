@@ -9,9 +9,7 @@ const User = require('../models/user');
 // Register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
-        name: req.body.name,
         email: req.body.email,
-        username: req.body.username,
         password: req.body.password
     });
     
@@ -26,10 +24,10 @@ router.post('/register', (req, res, next) => {
 
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
 
-    User.getUserByUsername(username, (err, user) => {
+    User.getUserByEmail(email, (err, user) => {
         if (err) {
             throw err;
         }
@@ -52,8 +50,6 @@ router.post('/authenticate', (req, res, next) => {
                     token: 'JWT ' + token,
                     user: {
                         id: user._id,
-                        name: user.name,
-                        username: user.name,
                         email: user.email
                     }
                 })
@@ -62,13 +58,6 @@ router.post('/authenticate', (req, res, next) => {
             }
         })
     });
-});
-
-// Profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    res.json({
-        user: req.user
-    })
 });
 
 module.exports = router;

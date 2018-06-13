@@ -85,6 +85,7 @@ router.get('/stocks/:stockId', (req, res, next) => {
 });
 
 
+// setup for socket communication
 router.clients = [];
 router.addClient = function (client) {
     console.log('addClient');

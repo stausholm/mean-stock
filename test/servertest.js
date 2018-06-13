@@ -7,61 +7,55 @@ const expect = chai.expect;
 const config = require('../config/database');
 const User = require('../models/user');
 
-describe('Database Tests', function() {
-  //Before starting the test, create a sandboxed database connection
-  //Once a connection is established invoke done()
+describe('User collection mongoDB', function() {
   before(function (done) {
     mongoose.connect(config.database);
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error'));
     db.once('open', function() {
-      console.log('We are connected to database!');
+      console.log('Connected to db');
       done();
     });
   });
   describe('User Database', function() {
-    //Save object with 'name' value of 'Mike"
+    //Save Bob user
     it('New User saved to users colection', function(done) {
       var testUser = User({
-        name: 'Mike',
-        email: 'mike@mike.dk',
-        username: 'mikii',
+        email: 'bob@bob.dk',
         password: '123test'
       });
  
       testUser.save(done);
     });
-    it('Dont save incorrect User format to collection', function(done) {
-      //Attempt to save with wrong info. An error should trigger
+    it('Prevent saving data to collection if model schema does not match', function(done) {
+      // Return err when attempting to save incorrect data
       var wrongSave = User({
-        notName: 'Not Mike'
+        notName: 'Not Bob'
       });
       wrongSave.save(err => {
         if(err) { return done(); }
         throw new Error('Should generate error!');
       });
     });
-    it('Should retrieve Mike User from Users collection', function(done) {
-      //Look up the 'Mike' object previously saved.
-      User.find({name: 'Mike'}, (err, name) => {
+    it('Should retrieve Bob User from Users collection', function(done) {
+      //Look up Bob in the Users collection.
+      User.find({email: 'bob@bob.dk'}, (err, email) => {
         if(err) {throw err;}
-        if(name.length === 0) {throw new Error('No data!');}
+        if(email.length === 0) {throw new Error('could not find Bob');}
         done();
       });
     });
-    it('Should delete Mike from Users collection', function(done) {
-        //Look up the 'Mike' object previously saved.
-        User.deleteOne({name: 'Mike'}, (err, name) => {
+    it('Should delete Bob from Users collection', function(done) {
+        //Look up Bob and delete him again.
+        User.deleteOne({email: 'bob@bob.dk'}, (err, email) => {
           if(err) {throw err;}
-          if(name.length === 0) {console.log('user was deleted')}
+          if(email.length === 0) {console.log('Bob was deleted')}
           done();
         });
       });
   });
-  //After all tests are finished drop database and close connection
+  // close connection to db after tests are done
   after(function(done){
       mongoose.connection.close(done);
-    // mongoose.connection.db.dropDatabase(function(){
-    // });
   });
 });

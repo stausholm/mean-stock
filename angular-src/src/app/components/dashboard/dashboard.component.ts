@@ -31,15 +31,15 @@ export class DashboardComponent implements OnInit {
 
     this.stockService.addStock(stock).subscribe(data => {
       if (data.success) {
-        this.flashMessages.show('Your stock is added!', { cssClass: 'alert-success', timeout: 3000 })
+        this.flashMessages.show('Your stock was added', { cssClass: 'alert-success', timeout: 3000 })
         this.stockService.sendMsg(stock);
       } else {
-        this.flashMessages.show('Something went wrong!', { cssClass: 'alert-danger', timeout: 3000 })
+        this.flashMessages.show('Could not add stock', { cssClass: 'alert-danger', timeout: 3000 })
       }
     });
   }
 
-  sendMessage() {
-    this.stockService.sendMsg("Test Message");
-  }
+  // sendMessage() {
+  //   this.stockService.sendMsg("Test Message");
+  // }
 }

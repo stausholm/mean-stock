@@ -1,7 +1,7 @@
 {
-  "name": "mean-natural-kit",
+  "name": "mean-stock",
   "version": "1.0.0",
-  "description": "MEAN Stack authentication app",
+  "description": "stock app with authentication and socket.io",
   "main": "app.js",
   "scripts": {
     "test": "mocha",
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danielmalmros/mean-natural-kit.git"
+    "url": "git+https://github.com/stausholm/mean-stock.git"
   },
-  "author": "Daniel Malmros",
+  "author": "MSS",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danielmalmros/mean-natural-kit/issues"
+    "url": "https://github.com/stausholm/mean-stock/issues"
   },
-  "homepage": "https://github.com/danielmalmros/mean-natural-kit#readme",
+  "homepage": "https://github.com/stausholm/mean-stock",
   "devDependencies": {
     "mocha": "^5.2.0"
   }

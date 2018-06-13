@@ -1,10 +1,6 @@
 <div class="jumbotron">
-  <h1 class="display-3">MEAN Authentication App!</h1>
-  <p>Welcome to our MEAN App</p>
-  <div>
-    <a class="btn btn-primary btn-lg" [routerLink]="['/register']" role="button">Register</a>
-    <a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Login</a>
-  </div>
+  <h1 class="display-3">COOL STOCKS</h1>
+  <p>Check all your stocks here</p>
 </div>
 
 <table class="table">
@@ -12,10 +8,11 @@
     <th>#</th>
     <th>Name</th>
     <th>Value</th>
+    <th *ngIf="isLoggedIn">Delete stock</th>
   </thead>
   <tbody>
     <tr app-table-row *ngFor="let stock of stocks; let i = index" [stockitem]="stock" [index]="i"></tr>
   </tbody>
 </table>
-<button (click)="sendMessage()">bobobo</button>
+<!-- <button (click)="sendMessage()">bobobo</button> -->
 

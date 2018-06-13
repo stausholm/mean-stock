@@ -1,30 +1,33 @@
-# Boilerplate: MEAN Stack
+# MEAN Stock
 
-The project is under development, but feel free to use it!
+Stock tool using socket.io. Exam project
 
-Created this application boilerplate to have a starter point on every MEAN projects!
+## Setup
+Have mongod running
 
-## Installation
-
-Install the dependencies
-
-```sh
+```
+$ cd mean-stock
 $ npm install
+$ nodemon
+
+$ cd angular-src
+$ npm install
+$ ng serve
 ```
-Run app
 
-```sh
-$ npm start
+server is on port 3000
+app is on port 4200
+
+## Testing
+
+test backend
+```
+$ npm test
 ```
 
-## Features:
+test frontend
+```
+$ npm test
+```
 
-* Comming soon
 
-## Basic use:
-
-* Comming soon
-
-## Contain:
-
-* Comming soon

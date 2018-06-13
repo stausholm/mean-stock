@@ -20,23 +20,14 @@ export class AuthService {
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers}).map(res => res.json());
   }
 
-  authticateUser(user) {
+  authenticateUser(user) {
     let headers = new Headers();
 
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers}).map(res => res.json());
   }
 
-  getProfile() {
-    let headers = new Headers();
-    this.loadToken();
-
-    headers.append('Authorization', this.authToken)
-    headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers}).map(res => res.json());
-  }
-
-  storUserData(token, user) {
+  storeUserData(token, user) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
 

@@ -10,7 +10,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class LoginComponent implements OnInit {
 
-  username: String;
+  email: String;
   password: String;
 
   constructor(
@@ -24,24 +24,18 @@ export class LoginComponent implements OnInit {
 
   onLoginSubmit() {
     const user = {
-      username: this.username,
+      email: this.email,
       password: this.password
     }
 
-    this.authService.authticateUser(user).subscribe(data => {
+    this.authService.authenticateUser(user).subscribe(data => {
       if (data.success) {
-        this.authService.storUserData(data.token, data.user);
+        this.authService.storeUserData(data.token, data.user);
 
-        this.flashMessages.show('You are now logged in!', {
-          cssClass: 'alert-success',
-          timeout: 3000
-        });
+        this.flashMessages.show('login success', {cssClass: 'alert-success',timeout: 3000});
         this.router.navigate(['dashboard'])
       } else {
-        this.flashMessages.show(data.msg, {
-          cssClass: 'alert-danger',
-          timeout: 3000
-        });
+        this.flashMessages.show(data.msg, {cssClass: 'alert-danger',timeout: 3000});
         this.router.navigate(['login'])
       }
     });

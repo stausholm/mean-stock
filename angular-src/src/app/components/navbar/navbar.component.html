@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['/']">MEAN APP</a>
+    <a class="navbar-brand" [routerLink]="['/']">STOCKS.IO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,10 +15,6 @@
           <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
             <a [routerLink]="['/dashboard']" class="text-white">Dashboard</a>
           </li>
-
-          <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-              <a [routerLink]="['/profile']" class="text-white">Profile</a>
-            </li>
 
           <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
             <a [routerLink]="['/login']" class="text-white">Login</a>

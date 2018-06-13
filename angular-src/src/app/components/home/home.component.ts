@@ -35,15 +35,15 @@ export class HomeComponent implements OnInit {
     //   return false
     // })
     this.getStocks();
-    
+
     var socket = io('http://localhost:3000');
     socket.on('Update', () => this.getStocks());
   }
 
-  sendMessage() {
-    this.stockservice.sendMsg("Test Message");
-  }
-  
+  // sendMessage() {
+  //   this.stockservice.sendMsg("Test Message");
+  // }
+
 
   getStocks() {
     console.log('Subscribe to service');
