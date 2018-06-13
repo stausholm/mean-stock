@@ -1,10 +1,14 @@
 <div *ngIf="stock">
   <h1>History of: {{stock.stockName}}</h1>
-
-  <ul>
-    <li *ngFor="let history of stock.stockHistory; let i = index">
-      <p>{{history.stockValue}}</p>
-      <p>{{history.stockTimestamp}}</p>
+  <p>Current value: {{stock.stockHistory[stock.stockHistory.length -1].stockValue}}</p>
+  <h2>Changes:</h2>
+  <ul class="list-group">
+    <li *ngFor="let history of stock.stockHistory; let i = index"  class="list-group-item d-flex justify-content-between align-items-center">
+      <span class="badge badge-primary badge-pill">{{history.stockValue}}</span>
+      {{formatDate(history.stockTimestamp)}}
     </li>
   </ul>
+</div>
+<div *ngIf="!stock">
+  <h1>No stock with that id was found</h1>
 </div>

@@ -9,7 +9,11 @@ import * as io from 'socket.io-client';
   styleUrls: ['./stock-history.component.css']
 })
 export class StockHistoryComponent implements OnInit {
-  stock: Object;
+  stock: {
+    stockHistory: [{
+      stockValue: Number
+    }]
+  };
   params: String;
 
   constructor(
@@ -30,8 +34,6 @@ export class StockHistoryComponent implements OnInit {
   }
   
   getHistory() {
-
-
     this.stockservice.getStockHistory(this.params).subscribe(stock => {
       this.stock = stock;
       //this.stockservice.sendMsg(stock);
@@ -41,5 +43,26 @@ export class StockHistoryComponent implements OnInit {
       return false
     })
   }
+
+  formatDate(date) {
+    date = new Date(date);
+
+    let monthNames = [
+      "Jan", "Feb", "Mar",
+      "Apr", "May", "Jun", "Jul",
+      "Aug", "Sep", "Oct",
+      "Nov", "Dec"
+    ];
+  
+    let day = date.getDate();
+    let monthIndex = date.getMonth();
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+  
+    return day + ' ' + monthNames[monthIndex] + ' ' + year + ' ' + hours + ':' + minutes;
+  }
+  
 
 }

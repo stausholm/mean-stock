@@ -1,33 +1,66 @@
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="['/']">STOCKS.IO</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-            <a [routerLink]="['/']" class="text-white">Home</a>
-          </li>
+
+<!-- <nav class="">
+  <a class="" [routerLink]="['/']">STOCKS.IO</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+          <a [routerLink]="['/']" class="text-white">Home</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mt-2 mt-md-0">
+        <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+          <a [routerLink]="['/dashboard']" class="text-white">Dashboard</a>
+        </li>
+
+        <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+          <a [routerLink]="['/login']" class="text-white">Login</a>
+        </li>
+
+        <li *ngIf="authService.loggedIn()" class="nav-item">
+          <a (click)="onLogoutClick()" href="#" class="text-white">Logout</a>
+        </li>
+
+        <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+          <a [routerLink]="['/register']" class="text-white">Register</a>
+        </li>
+      </ul>
+  </div>
+</nav> -->
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <h3><a [routerLink]="['/']">STOCKS.IO</a></h3>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+              <a [routerLink]="['/']" class="text-white">Home</a>
+            </li>
+
+            <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+              <a [routerLink]="['/dashboard']" class="text-white">Dashboard</a>
+            </li>
+    
+            <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+              <a [routerLink]="['/login']" class="text-white">Admin Login</a>
+            </li>
+    
+            <li *ngIf="authService.loggedIn()" class="nav-item">
+              <a (click)="onLogoutClick()" href="#" class="text-white">Logout</a>
+            </li>
+    
+            <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+              <a [routerLink]="['/register']" class="text-white">Admin Register</a>
+            </li>
         </ul>
+    </nav>
 
-        <ul class="navbar-nav mt-2 mt-md-0">
-          <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-            <a [routerLink]="['/dashboard']" class="text-white">Dashboard</a>
-          </li>
-
-          <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-            <a [routerLink]="['/login']" class="text-white">Login</a>
-          </li>
-
-          <li *ngIf="authService.loggedIn()" class="nav-item">
-            <a (click)="onLogoutClick()" href="#" class="text-white">Logout</a>
-          </li>
-
-          <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
-            <a [routerLink]="['/register']" class="text-white">Register</a>
-          </li>
-        </ul>
-    </div>
-  </nav>
-</header>
+    <!-- <div id="content">
+        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <i class="glyphicon glyphicon-align-left"></i>
+            Toggle Sidebar
+        </button>
+    <div> -->

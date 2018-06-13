@@ -1,11 +1,10 @@
-<div class="jumbotron">
+<div class="jumbotron" *ngIf="!isLoggedIn">
   <h1 class="display-3">COOL STOCKS</h1>
   <p>Check all your stocks here</p>
 </div>
 
 <table class="table">
   <thead>
-    <th>#</th>
     <th>Name</th>
     <th>Value</th>
     <th *ngIf="isLoggedIn">Delete stock</th>

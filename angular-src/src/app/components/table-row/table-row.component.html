@@ -1,11 +1,14 @@
 
-    <td>{{index}}</td>
     <td><a [routerLink]="['/stocks/' + stockitem._id]">{{stockitem.stockName}}</a></td>
-    <td *ngIf="!isLoggedIn;else admin_rights">{{stockitem.stockHistory[stockitem.stockHistory.length -1].stockValue}}</td>
+    <td *ngIf="!isLoggedIn;else admin_rights" [ngClass]="directionClass">{{stockitem.stockHistory[stockitem.stockHistory.length -1].stockValue}} ({{direction}})</td>
     <ng-template #admin_rights>
       <td>
-        <input type="number" class="form-control" [(ngModel)]="newValue">
-        <button class="btn" (click)="updateStock(stockitem)">Update value</button>
+        <div class="input-group">
+          <input type="number" class="form-control" [(ngModel)]="newValue">
+          <div class="input-group-btn">
+            <button class="btn btn-default" (click)="updateStock(stockitem)">Update value</button>
+          </div>
+        </div>
       </td>
       <td><button class="btn btn-danger" (click)="deleteStock(stockitem._id)">Delete this</button></td>
     </ng-template>

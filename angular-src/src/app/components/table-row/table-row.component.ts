@@ -18,6 +18,8 @@ export class TableRowComponent implements OnInit {
   @Input() index:String;
   isLoggedIn: Boolean;
   newValue:Number;
+  direction: String;
+  directionClass: String;
 
   constructor(
     private authservice: AuthService,
@@ -28,6 +30,22 @@ export class TableRowComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn = this.authservice.loggedIn();
     this.newValue = this.stockitem.stockHistory[this.stockitem.stockHistory.length -1].stockValue;
+
+    if(this.stockitem.stockHistory.length > 1) {
+      let latest = this.stockitem.stockHistory[this.stockitem.stockHistory.length -1].stockValue;
+      let secondLatest = this.stockitem.stockHistory[this.stockitem.stockHistory.length -2].stockValue;
+
+      if(latest > secondLatest) {
+        this.direction = "Up from " + secondLatest;
+        this.directionClass = "up";
+      } else {
+        this.direction = "Down from " + secondLatest;
+        this.directionClass = "down";
+      }
+    } else {
+      this.direction = "No value changes";
+      this.directionClass = "default";
+    } 
   }
 
   deleteStock(stockId) {
