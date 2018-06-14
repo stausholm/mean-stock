@@ -13,5 +13,6 @@
     <tr app-table-row *ngFor="let stock of stocks; let i = index" [stockitem]="stock" [index]="i"></tr>
   </tbody>
 </table>
+<p *ngIf="stocks.length == 0">No stocks to display yet! Get an admin to add one, and they will appear here.</p>
 <!-- <button (click)="sendMessage()">bobobo</button> -->
 

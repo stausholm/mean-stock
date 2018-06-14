@@ -25,6 +25,10 @@ export class StockService {
       })
   }
 
+  testService() {
+    return "yo";
+  }
+
   sendMsg(msg) {
     console.log('yoyo', msg);
     this.stocks.next(msg);

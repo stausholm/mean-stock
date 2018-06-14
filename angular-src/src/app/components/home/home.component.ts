@@ -9,9 +9,11 @@ import * as io from 'socket.io-client';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
-  stocks: Object;
+  stocks = [];
   isLoggedIn: Boolean;
+  socket: any;
 
   constructor(
     private stockservice: StockService,
@@ -36,13 +38,17 @@ export class HomeComponent implements OnInit {
     // })
     this.getStocks();
 
-    var socket = io('http://localhost:3000');
-    socket.on('Update', () => this.getStocks());
+    this.socket = io('http://localhost:3000');
+    this.socket.on('Update', () => this.getStocks());
   }
 
   // sendMessage() {
   //   this.stockservice.sendMsg("Test Message");
   // }
+  ngOnDestroy() {
+    console.log('destroy called');
+    this.socket.disconnect();
+  }
 
 
   getStocks() {
